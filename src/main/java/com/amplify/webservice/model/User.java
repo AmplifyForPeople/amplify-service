@@ -7,10 +7,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable{
+@Table(name = "amplifyUser")
+public class User implements Serializable {
+
     @Id
-    @Column
+    @Column(name = "id")
     private String id;
 
     @Column(name = "password")
