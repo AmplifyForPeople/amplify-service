@@ -36,12 +36,29 @@ public class ClientEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
+		/*try
+		{
+		InitialContext cxt = new InitialContext();
+		if ( cxt != null )
+		{
+		DataSource ds = (DataSource) cxt.lookup( "java:jboss/PostgresXA");
+		if ( ds == null ) strStatus = "Error while obtaining the dataSource";
+		else
+		{
+		Connection connection = ds.getConnection();
+		Statement stm = connection.createStatement();
+		stm.executeUpdate("insert into exemple (code, name) values('"+strCode+"','"+strName+"')");
+		connection.close();
+		stm.close();
+		}
+		}
+		}*/	
 		Client client = new Client();
-		client.setEmail("test@tes.com");
-		client.setId("test_id");
-		client.setName("Test");
-		client.setPassword("test_password");
-		client.setPhone("000 000 000");
+//		client.setEmail("test@tes.com");
+//		client.setId("test_id");
+//		client.setName("Test");
+//		client.setPassword("test_password");
+//		client.setPhone("000 000 000");
 		return Response.ok(client).build();
 //		TODO: retrieve the client 
 //		Client client = null;

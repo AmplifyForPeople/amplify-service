@@ -38,8 +38,8 @@ public class GenreEndpoint {
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
 		Genre genre = new Genre();
-		genre.setId(1);
-		genre.setName("GenreTest");
+//		genre.setId(1);
+//		genre.setName("GenreTest");
 		return Response.ok(genre).build();
 //		//TODO: retrieve the genre 
 //		Genre genre = null;

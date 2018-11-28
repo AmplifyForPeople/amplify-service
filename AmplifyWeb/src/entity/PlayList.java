@@ -1,6 +1,5 @@
 package entity;
 
-import java.math.BigDecimal;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;
@@ -9,46 +8,45 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.net.URI;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
-@Table(name = "genre_amplify")
+@Table(name = "playlist_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = Genre.FIND_ALL, query = "select g from Genre g")
-public class Genre {
+@NamedQuery(name = PlayList.FIND_ALL, query = "select g from PlayList g")
+public class PlayList {
 
-    public static final String FIND_ALL = "findAllGenres";
+    public static final String FIND_ALL = "findAllPlayLists";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="GENRE_ID")
+    @Column(name="PLAY_LIST_ID")
     @XmlTransient
     protected int id;
 
     @NotNull
-    protected String name;
+    protected boolean current;
 
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ESTABLISHMENT_OWNER_ID")
+    protected Establishment establishment;
     
-    @ManyToMany(mappedBy="genres")
-    protected Set<Establishment> establishments;
-    
-    @ManyToMany(mappedBy="genres")
-    protected Set<User>  users;
-    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="SONG_OWNER_ID")
+    protected Song song;
+       
     @Override
     public String toString() {
-        return new StringBuilder("Genre [")
-                .append(id).append(", ")
-                .append(name).append("]").toString();
+        return new StringBuilder("PlayList [")
+        		.append(current).append("]").toString();
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
-                .add("name", this.name)
+                .add("current", this.current)
                 .build();
     }
 }

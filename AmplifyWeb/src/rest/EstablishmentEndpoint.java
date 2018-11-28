@@ -29,15 +29,15 @@ public class EstablishmentEndpoint {
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
 		Establishment est = new Establishment();
-		est.setId("test_id");
-		est.setEmail("test@test.com");
-		est.setInfo("Test test test test test test");
-		est.setName("TestEstablishName");
-		est.setLocalation(1);
-		est.setFavorite_genre(null);
-		est.setImage("TestImg.jpg");
-		est.setPlaying_song(null);
-		est.setPlaylist(null);
+//		est.setId("test_id");
+//		est.setEmail("test@test.com");
+//		est.setInfo("Test test test test test test");
+//		est.setName("TestEstablishName");
+//		est.setLocalation(1);
+//		est.setFavorite_genre(null);
+//		est.setImage("TestImg.jpg");
+//		est.setPlaying_song(null);
+//		est.setPlaylist(null);
 		return Response.ok(est).build();
 //		//TODO: retrieve the establishment 
 //		Establishment establishment = null;

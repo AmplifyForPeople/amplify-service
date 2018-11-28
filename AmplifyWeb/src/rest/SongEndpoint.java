@@ -38,15 +38,15 @@ public class SongEndpoint {
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
 		Song song = new Song();
-		song.setAlbum("AlbumTest");
-		song.setAuthor("Manolo");
-		song.setGenre(null);
-		song.setGlobal_dislike(100);
-		song.setGlobal_like(100);
-		song.setId("SongIdTest");
-		song.setImage("ImatgeTest.jpg");
-		song.setName("TestSong");
-		song.setSimilars(null);
+//		song.setAlbum("AlbumTest");
+//		song.setAuthor("Manolo");
+//		song.setGenre(null);
+//		song.setGlobal_dislike(100);
+//		song.setGlobal_like(100);
+//		song.setId("SongIdTest");
+//		song.setImage("ImatgeTest.jpg");
+//		song.setName("TestSong");
+//		song.setSimilars(null);
 		
 		return Response.ok(song).build();
 //		//TODO: retrieve the song 

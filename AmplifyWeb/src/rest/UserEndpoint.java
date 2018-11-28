@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 import entity.User;
 
-//Remeber to add on header "  Accept=application/json   " to try it.
+//Remember to add on header "  Accept=application/json   " to try it.
 
 @RequestScoped
 @Path("/users")
@@ -38,12 +38,12 @@ public class UserEndpoint {
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
 		User user = new User();
-		user.setAge(15);
-		user.setCity("CityTets");
-		user.setEmail("test@test.com");
-		user.setFavorite_genres(null);
-		user.setId("TestIdUser");
-		user.setName("TestUserName");
+//		user.setAge(15);
+//		user.setCity("CityTets");
+//		user.setEmail("test@test.com");
+//		user.setFavorite_genres(null);
+//		user.setId("TestIdUser");
+//		user.setName("TestUserName");
 		return Response.ok(user).build();
 //		//TODO: retrieve the user 
 //		User user = null;

@@ -14,41 +14,42 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "genre_amplify")
+@Table(name = "vote_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = Genre.FIND_ALL, query = "select g from Genre g")
-public class Genre {
+@NamedQuery(name = Genre.FIND_ALL, query = "select g from Vote g")
+public class Vote {
 
-    public static final String FIND_ALL = "findAllGenres";
+    public static final String FIND_ALL = "findAllVotes";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="GENRE_ID")
+    @JoinColumn(name="VOTE_ID")
     @XmlTransient
     protected int id;
 
-    @NotNull
-    protected String name;
+    protected int like_point;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="VOTED_SONG_ID")
+    protected Song song;
     
-    @ManyToMany(mappedBy="genres")
-    protected Set<Establishment> establishments;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="USER_VOTED_ID")
+    protected User user;
     
-    @ManyToMany(mappedBy="genres")
-    protected Set<User>  users;
-    
+
     @Override
     public String toString() {
         return new StringBuilder("Genre [")
                 .append(id).append(", ")
-                .append(name).append("]").toString();
+                .append(like_point).append("]").toString();
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
-                .add("name", this.name)
+                .add("like_point", this.like_point)
                 .build();
     }
 }

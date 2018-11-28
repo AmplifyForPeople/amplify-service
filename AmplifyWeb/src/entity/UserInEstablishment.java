@@ -1,6 +1,5 @@
 package entity;
 
-import java.math.BigDecimal;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;
@@ -9,46 +8,45 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.net.URI;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
-@Table(name = "genre_amplify")
+@Table(name = "userinestablishment_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = Genre.FIND_ALL, query = "select g from Genre g")
-public class Genre {
+@NamedQuery(name = UserInEstablishment.FIND_ALL, query = "select g from PlayList g")
+public class UserInEstablishment {
 
-    public static final String FIND_ALL = "findAllGenres";
+    public static final String FIND_ALL = "findAllUserInEstablishment";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="GENRE_ID")
+    @Column(name="USERINESTABLISHMENT_ID")
     @XmlTransient
     protected int id;
 
-    @NotNull
-    protected String name;
+    //@NotNull
+    //protected date date;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ESTABLISHMENT_VISIT_ID")
+    protected Establishment establishment;
     
-    @ManyToMany(mappedBy="genres")
-    protected Set<Establishment> establishments;
     
-    @ManyToMany(mappedBy="genres")
-    protected Set<User>  users;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="USER_VISITOR_ID")
+    protected User user;
+        
     
     @Override
     public String toString() {
-        return new StringBuilder("Genre [")
-                .append(id).append(", ")
-                .append(name).append("]").toString();
+        return new StringBuilder("UserInEstablishment [")
+        		.append(id).append("]").toString();
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
-                .add("name", this.name)
                 .build();
     }
 }
