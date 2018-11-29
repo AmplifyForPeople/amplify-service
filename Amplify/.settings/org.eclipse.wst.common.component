@@ -4,5 +4,9 @@
         <dependent-module archiveName="AmplifyWeb.war" deploy-path="/" handle="module:/resource/AmplifyWeb/AmplifyWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="CoordinatorModule.war" deploy-path="/" handle="module:/resource/CoordinatorModule/CoordinatorModule">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
