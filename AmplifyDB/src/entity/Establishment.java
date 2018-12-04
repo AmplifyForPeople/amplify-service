@@ -38,6 +38,9 @@ public class Establishment {
     @NotNull
     protected float position_lng;
 
+    @NotNull
+    protected String imatge;
+    
     @OneToMany(mappedBy="establishment")
     protected Set<PlayList> playlists;
     
@@ -50,8 +53,6 @@ public class Establishment {
     protected Set<Genre> genres; 
     
     
-    //protect ? imatge;
-    //protected int imatge;
     
     //protected String genre;
     
@@ -69,6 +70,7 @@ public class Establishment {
                 .append(id).append(", ")
                 .append(name).append(", ")
                 .append(info).append(", ")
+                .append(imatge).append(", ")
                 .append(position_lat).append(", ")
                 .append(position_lng).append("]").toString();
     }
@@ -78,6 +80,7 @@ public class Establishment {
                 .add("id", this.id)
                 .add("name", this.name)
                 .add("info", this.info)
+                .add("imatge", this.imatge)
                 .add("position_lat", this.position_lat)
                 .add("position_lng", this.position_lng)
                 .build();

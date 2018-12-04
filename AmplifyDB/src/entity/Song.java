@@ -45,17 +45,9 @@ public class Song {
 	@ManyToMany(mappedBy="songs")
 	protected Set<User> users; 
     
-	//protected int imatge;
-
-	//protected String genre;
-
-
-	//protected boolean isPremium = false;
-
-	//@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
-	//private List<TasteAllergy> tasteAllergy;
-
-
+	
+	@NotNull
+	protected String imatge;
 
 	@Override
 	public String toString() {
@@ -63,6 +55,7 @@ public class Song {
 				.append(id).append(", ")
 				.append(name).append(", ")
 				.append(album).append(", ")
+				.append(imatge).append(", ")
 				.append(author).append("]").toString();
 	}
 
@@ -71,6 +64,7 @@ public class Song {
 				.add("id", this.id)
 				.add("name", this.name)
 				.add("album", this.album)
+				.add("imatge", this.imatge)
 				.add("author", this.author)
 				.build();
 	}
