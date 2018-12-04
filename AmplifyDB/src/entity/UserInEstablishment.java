@@ -1,55 +1,51 @@
 package entity;
 
-import java.math.BigDecimal;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.net.URI;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
-@Table(name = "vote_amplify")
+@Table(name = "userinestablishment_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = Genre.FIND_ALL, query = "select g from Vote g")
-public class Vote {
+@NamedQuery(name = UserInEstablishment.FIND_ALL, query = "select g from PlayList g")
+public class UserInEstablishment {
 
-    public static final String FIND_ALL = "findAllVotes";
+    public static final String FIND_ALL = "findAllUserInEstablishment";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name="VOTE_ID")
+    @Column(name="USERINESTABLISHMENT_ID")
     @XmlTransient
     protected int id;
 
-    protected int like_point;
+    //@NotNull
+    //protected date date;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="VOTED_SONG_ID")
-    protected Song song;
+    @JoinColumn(name="ESTABLISHMENT_VISIT_ID")
+    protected Establishment establishment;
+    
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="USER_VOTED_ID")
+    @JoinColumn(name="USER_VISITOR_ID")
     protected User user;
+        
     
-
     @Override
     public String toString() {
-        return new StringBuilder("Genre [")
-                .append(id).append(", ")
-                .append(like_point).append("]").toString();
+        return new StringBuilder("UserInEstablishment [")
+        		.append(id).append("]").toString();
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
-                .add("like_point", this.like_point)
                 .build();
     }
 }

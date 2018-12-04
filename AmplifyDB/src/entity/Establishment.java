@@ -1,8 +1,6 @@
 package entity;
 
-import java.math.BigDecimal;
 import java.util.Set;
-
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;
@@ -47,7 +45,8 @@ public class Establishment {
     @OneToMany(mappedBy="establishment")
     protected Set<UserInEstablishment> userinestablishments;
     
-    @ManyToMany(mappedBy="establishments")
+    @ManyToMany
+    @JoinTable(name="EstablishmentGenres_amplify")
     protected Set<Genre> genres; 
     
     

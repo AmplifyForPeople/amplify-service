@@ -1,8 +1,5 @@
 package entity;
 
-import java.math.BigDecimal;
-import java.util.Set;
-
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;
@@ -14,17 +11,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
-@Table(name = "user_amplify")
+@Table(name = "client_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = User.FIND_ALL, query = "select g from User g")
-public class User {
+@NamedQuery(name = Client.FIND_ALL, query = "select g from Client g")
+public class Client {
 
-    public static final String FIND_ALL = "findAllUsers";
+    public static final String FIND_ALL = "findAllClients";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name="USER_ID")
     @XmlTransient
     protected int id;
 
@@ -38,47 +34,29 @@ public class User {
     protected String email;
 
     @NotNull
-    protected int age;
+    protected String phone;
     
-    @NotNull
-    protected String city;
-    
-    @OneToMany(mappedBy="user")
-    protected Set<UserInEstablishment> userinestablishment;
-    
-    @OneToMany(mappedBy="user")
-    protected Set<Vote> votes;
-    
-    @ManyToMany(mappedBy="users")
-    protected Set<Genre>  genres; 
-    
-    @ManyToMany(mappedBy="user")
-    protected Set<Genre> songs; 
-    
-    //protected boolean isPremium = false;
-    
-    //@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
-    //private List<TasteAllergy> tasteAllergy;
-
-    
+    @OneToOne @MapsId
+    Establishment establishment;
+        
 
     @Override
     public String toString() {
-        return new StringBuilder("User [")
+        return new StringBuilder("Client [")
                 .append(id).append(", ")
                 .append(name).append(", ")
-                .append(age).append(", ")
                 .append(email).append(", ")
-                .append(city).append("]").toString();
+                .append(phone).append(", ")
+                .append(establishment).append("]").toString();
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("name", this.name)
-                .add("age", this.age)
                 .add("email", this.email)
-                .add("city", this.city)
+                .add("phone", this.phone)
+                .add("establishment", String.valueOf(this.establishment))
                 .build();
     }
 }
