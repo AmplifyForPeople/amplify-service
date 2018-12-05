@@ -3,6 +3,11 @@ package entityAndroid;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+
 public class AmplifySiteDTO {
 	public String establishment;
 	public String songId;
@@ -10,7 +15,7 @@ public class AmplifySiteDTO {
 	public String songAuthor;
 	public String songAlbum;
 	public String songImage;
-	public HashMap<String, ArrayList<String>> similarSongs;
+	public HashMap<String, ArrayList<String>> similarSongs = new HashMap<>();
 	
 	public String getEstablishment() {
 		return establishment;
@@ -24,7 +29,7 @@ public class AmplifySiteDTO {
 		return songId;
 	}
 	
-	public void setSongId(String name) {
+	public void setSongId(String songId) {
 		this.songId = songId;
 	}
 	
@@ -72,5 +77,35 @@ public class AmplifySiteDTO {
 		similarSongs.put(id, list);
 	}
 
+	public JsonObject toJSON() {
+		JsonObject JSONobj = null;
+		
+		JsonObjectBuilder Builder = Json.createObjectBuilder();
+		JsonArrayBuilder Array = Json.createArrayBuilder();
+		
+		Builder.add("establishment", establishment);
+		Builder.add("songId", songId);
+		Builder.add("songName", songName);
+		Builder.add("songAuthor", songAuthor);
+		Builder.add("songAlbum", songAlbum);
+		Builder.add("songImage", songImage);
+		
+		for (String key : similarSongs.keySet()) {
+			JsonObjectBuilder tmp = Json.createObjectBuilder();
+			tmp.add("id", key);
+			tmp.add("name", similarSongs.get(key).get(0));
+			tmp.add("image", similarSongs.get(key).get(1));
+			
+			Array.add(tmp);
+		}
+		
+		Builder.add("similarSongs",Array);
+		
+		JSONobj = Builder.build();
+		
+		return JSONobj;
+	}
+	
+	public AmplifySiteDTO() {}
 
 }

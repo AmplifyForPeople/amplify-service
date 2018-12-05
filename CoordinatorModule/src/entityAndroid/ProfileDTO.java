@@ -1,10 +1,14 @@
 package entityAndroid;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+
 public class ProfileDTO {
 	public String name;
-	public int age;
+	public String age;
 	public String sex;
-	public String city;
+	public String location;
 	
 	public String getName() {
 		return name;
@@ -14,11 +18,11 @@ public class ProfileDTO {
 		this.name = name;
 	}
 	
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 	
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	
@@ -31,11 +35,27 @@ public class ProfileDTO {
 	}
 	
 	public String getLocation() {
-		return city;
+		return location;
 	}
 	
-	public void setLocation(String city) {
-		this.city = city;
+	public void setLocation(String location) {
+		this.location = location;
 	}
+	
+	public JsonObject toJSON() {
+		JsonObject JSONobj = null;
+		
+		JsonObjectBuilder Builder = Json.createObjectBuilder();
+		Builder.add("name",name);
+		Builder.add("age",age);
+		Builder.add("sex",sex);
+		Builder.add("location",location);
+		JSONobj = Builder.build();
+		
+		return JSONobj;
+	}
+	
+	public ProfileDTO() {}
+
 
 }
