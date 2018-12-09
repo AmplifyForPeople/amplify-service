@@ -7,7 +7,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class GenresDTO {
+public class Genres {
 	public HashMap<String, String> Genres = new HashMap<>();
 	
 	public HashMap<String, String> getGenres() {
@@ -37,7 +37,7 @@ public class GenresDTO {
 		return JSONobj;
 	}
 	
-	public GenresDTO() {}
+	public Genres() {}
 	
 
 }

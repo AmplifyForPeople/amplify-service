@@ -8,7 +8,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class DetailEstablishmentDTO {
+public class DetailEstablishment {
 	public String name;
 	public String info;
 	public String image;
@@ -51,7 +51,7 @@ public class DetailEstablishmentDTO {
 		return mostVotedSongs;
 	}
 	
-	public void addSongs(String id, String name, String image) {
+	public void addSimilarSongs(String id, String name, String image) {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add(name);
 		list.add(image);
@@ -93,6 +93,6 @@ public class DetailEstablishmentDTO {
 		return JSONobj;
 	}
 	
-	public DetailEstablishmentDTO() {}
+	public DetailEstablishment() {}
 
 }

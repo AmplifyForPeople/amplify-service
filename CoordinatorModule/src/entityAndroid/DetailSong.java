@@ -8,7 +8,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class DetailSongDTO {
+public class DetailSong {
 	public String name;
 	public String author;
 	public String genre;
@@ -88,5 +88,5 @@ JsonObject JSONobj = null;
 		return JSONobj;
 	}
 	
-	public DetailSongDTO() {}
+	public DetailSong() {}
 }

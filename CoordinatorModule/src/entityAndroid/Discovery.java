@@ -9,7 +9,7 @@ import javax.json.JsonObjectBuilder;
 
 import java.util.ArrayList;
 
-public class DiscoveryDTO {
+public class Discovery {
 	public HashMap<String, ArrayList<String>> establishments = new HashMap<>();
 	public HashMap<String, String> mostVotedGenres = new HashMap<>();
 	public HashMap<String, ArrayList<String>> mostVotedSongs = new HashMap<>();
@@ -86,7 +86,7 @@ public class DiscoveryDTO {
 		return JSONobj;
 	}
 	
-	public DiscoveryDTO() {}
+	public Discovery() {}
 	
 	
 }

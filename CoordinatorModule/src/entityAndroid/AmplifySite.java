@@ -8,7 +8,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class AmplifySiteDTO {
+public class AmplifySite {
 	public String establishment;
 	public String songId;
 	public String songName;
@@ -106,6 +106,6 @@ public class AmplifySiteDTO {
 		return JSONobj;
 	}
 	
-	public AmplifySiteDTO() {}
+	public AmplifySite() {}
 
 }

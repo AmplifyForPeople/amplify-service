@@ -7,28 +7,26 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import entityAndroid.GenresDTO;
+import entityAndroid.Profile;
 
 @RequestScoped
-@Path("/genresdtoes")
+@Path("/profiles")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class GenresDTOEndpoint {
+public class ProfileEndpoint {
 
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final Long id) {
-		//TODO: retrieve the genresdto 
-		GenresDTO genresdto = new GenresDTO();
+		//TODO: retrieve the profile 
+		Profile profile = new Profile();
 		
-		genresdto.addGenres("001", "Pop");
-		genresdto.addGenres("002", "Rock");
-		genresdto.addGenres("003", "Dance");
-		genresdto.addGenres("004", "Disco");
+		profile.setAge("15");
+		profile.setLocation("Lleida");
+		profile.setName("Paco");
+		profile.setSex("Male");
 		
-		return Response.ok(genresdto.toJSON()).build();
+		return Response.ok(profile.toJSON()).build();
 	}
 
 }

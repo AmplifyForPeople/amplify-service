@@ -8,7 +8,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class FavoriteSongsDTO {
+public class FavoriteSongs {
 	public HashMap<String, ArrayList<String>> favoriteSongs = new HashMap<>();
 	
 	public HashMap<String, ArrayList<String>> getSongs() {
@@ -48,5 +48,5 @@ public class FavoriteSongsDTO {
 		
 	}
 	
-	public FavoriteSongsDTO() {}
+	public FavoriteSongs() {}
 }

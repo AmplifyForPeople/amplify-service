@@ -4,7 +4,7 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class ProfileDTO {
+public class Profile {
 	public String name;
 	public String age;
 	public String sex;
@@ -55,7 +55,7 @@ public class ProfileDTO {
 		return JSONobj;
 	}
 	
-	public ProfileDTO() {}
+	public Profile() {}
 
 
 }
