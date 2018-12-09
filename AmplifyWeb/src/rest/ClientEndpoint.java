@@ -2,6 +2,8 @@ package rest;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,7 +16,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import business_module.Clients;
+import business_module.Songs;
 import entity.Client;
+import entity.Song;
 
 //Remeber to add on header "  Accept=application/json   " to try it.
 
@@ -24,32 +29,20 @@ import entity.Client;
 @Consumes({ "application/xml", "application/json" })
 public class ClientEndpoint {
 	
-//	@POST
-//	public Response create(final Client client) {
-//		//TODO: process the given client 
-//		//you may want to use the following return statement, assuming that Client#getId() or a similar method 
-//		//would provide the identifier to retrieve the created Client resource:
-//		//return Response.created(UriBuilder.fromResource(ClientEndpoint.class).path(String.valueOf(client.getId())).build()).build();
-//		return Response.created(null).build();
-//	}
-//
+	@Inject
+	Clients clients;
+	
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
-	public Response findById(@PathParam("id") final Long id) {
-		Client client = new Client();
-		client.setEmail("test@tes.com");
-		client.setId("test_id");
-		client.setName("Test");
-		client.setPassword("test_password");
-		client.setPhone("000 000 000");
-		return Response.ok(client).build();
-//		TODO: retrieve the client 
-//		Client client = null;
-//		if (client == null) {
-//			return Response.status(200).build();
-//		}
-//		return Response.ok(client).build();
+	public Response findById(@PathParam("id") final int id) {	
+		return Response.ok(this.clients.findById(id)).build();
 	}
+	
+    @POST
+    public Response save(@Valid Client client) {
+    	this.clients.create(client);
+    	return Response.ok(client).build();
+    }
 //
 //	@GET
 //	public List<Client> listAll(@QueryParam("start") final Integer startPosition,

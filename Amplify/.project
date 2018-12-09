@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>AmplifyWeb</project>
+		<project>AmplifyDB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
