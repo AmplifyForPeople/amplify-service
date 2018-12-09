@@ -29,11 +29,11 @@ public class PlayList {
     protected boolean current;
 
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="ESTABLISHMENT_OWNER_ID")
     protected Establishment establishment;
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="SONG_OWNER_ID")
     protected Song song;
        

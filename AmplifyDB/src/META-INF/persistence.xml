@@ -4,6 +4,7 @@
     <jta-data-source>java:jboss/PostgresXA</jta-data-source>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="update"/>
+      <property name="hibernate.enable_lazy_load_no_trans" value="true" />
     </properties>
   </persistence-unit>
 </persistence>

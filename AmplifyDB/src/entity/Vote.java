@@ -25,11 +25,11 @@ public class Vote {
 
     protected int like_point;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="VOTED_SONG_ID")
     protected Song song;
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="USER_VOTED_ID")
     protected User user;
     

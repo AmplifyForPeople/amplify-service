@@ -2,6 +2,10 @@
     <wb-module deploy-name="Amplify">
         <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
         <dependent-module archiveName="AmplifyWeb.war" deploy-path="/" handle="module:/resource/AmplifyWeb/AmplifyWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AmplifyDB.jar" deploy-path="/lib" handle="module:/resource/AmplifyDB/AmplifyDB">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

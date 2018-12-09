@@ -3,6 +3,7 @@
 	<name>AmplifyWeb</name>
 	<comment></comment>
 	<projects>
+		<project>AmplifyDB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

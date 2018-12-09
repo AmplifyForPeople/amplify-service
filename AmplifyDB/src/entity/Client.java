@@ -1,5 +1,6 @@
 package entity;
 
+
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.*;

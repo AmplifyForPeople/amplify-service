@@ -27,12 +27,12 @@ public class UserInEstablishment {
     //@NotNull
     //protected date date;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="ESTABLISHMENT_VISIT_ID")
     protected Establishment establishment;
     
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="USER_VISITOR_ID")
     protected User user;
         

@@ -41,10 +41,10 @@ public class User {
     @NotNull
     protected String city;
     
-    @OneToMany(mappedBy="user")
+    @OneToMany
     protected Set<UserInEstablishment> userinestablishment;
     
-    @OneToMany(mappedBy="user")
+    @OneToMany
     protected Set<Vote> votes;
     
     @ManyToMany
@@ -61,6 +61,7 @@ public class User {
     //private List<TasteAllergy> tasteAllergy;
 
     
+    
 
     @Override
     public String toString() {
@@ -72,7 +73,15 @@ public class User {
                 .append(city).append("]").toString();
     }
 
-    public JsonObject toJson() {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("name", this.name)

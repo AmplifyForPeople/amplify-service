@@ -3,6 +3,8 @@ package rest;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,7 +17,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import business_module.Songs;
+import business_module.Users;
 import entity.Song;
+import entity.User;
 
 //Remeber to add on header "  Accept=application/json   " to try it.
 
@@ -25,38 +30,21 @@ import entity.Song;
 @Consumes({ "application/xml", "application/json" })
 public class SongEndpoint {
 
-//	@POST
-//	public Response create(final Song song) {
-//		//TODO: process the given song 
-//		//you may want to use the following return statement, assuming that Song#getId() or a similar method 
-//		//would provide the identifier to retrieve the created Song resource:
-//		//return Response.created(UriBuilder.fromResource(SongEndpoint.class).path(String.valueOf(song.getId())).build()).build();
-//		return Response.created(null).build();
-//	}
-//
+	@Inject
+	Songs songs;
+	
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
-	public Response findById(@PathParam("id") final Long id) {
-		Song song = new Song();
-//		song.setAlbum("AlbumTest");
-//		song.setAuthor("Manolo");
-//		song.setGenre(null);
-//		song.setGlobal_dislike(100);
-//		song.setGlobal_like(100);
-//		song.setId("SongIdTest");
-//		song.setImage("ImatgeTest.jpg");
-//		song.setName("TestSong");
-//		song.setSimilars(null);
-		
-		return Response.ok(song).build();
-//		//TODO: retrieve the song 
-//		Song song = null;
-//		if (song == null) {
-//			return Response.status(Status.NOT_FOUND).build();
-//		}
-//		return Response.ok(song).build();
+	public Response findById(@PathParam("id") final int id) {	
+		return Response.ok(this.songs.findById(id)).build();
 	}
-//
+	
+    @POST
+    public Response save(@Valid Song song) {
+    	this.songs.create(song);
+    	return Response.ok(song).build();
+    }
+    
 //	@GET
 //	public List<Song> listAll(@QueryParam("start") final Integer startPosition,
 //			@QueryParam("max") final Integer maxResult) {
