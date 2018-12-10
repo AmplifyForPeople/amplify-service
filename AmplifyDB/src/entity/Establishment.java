@@ -85,4 +85,77 @@ public class Establishment {
                 .add("position_lng", this.position_lng)
                 .build();
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public float getPosition_lat() {
+		return position_lat;
+	}
+
+	public void setPosition_lat(float position_lat) {
+		this.position_lat = position_lat;
+	}
+
+	public float getPosition_lng() {
+		return position_lng;
+	}
+
+	public void setPosition_lng(float position_lng) {
+		this.position_lng = position_lng;
+	}
+
+	public String getImatge() {
+		return imatge;
+	}
+
+	public void setImatge(String imatge) {
+		this.imatge = imatge;
+	}
+
+	public Set<PlayList> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<PlayList> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Set<UserInEstablishment> getUserinestablishments() {
+		return userinestablishments;
+	}
+
+	public void setUserinestablishments(Set<UserInEstablishment> userinestablishments) {
+		this.userinestablishments = userinestablishments;
+	}
+
+	public Set<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
+	}
+    
 }

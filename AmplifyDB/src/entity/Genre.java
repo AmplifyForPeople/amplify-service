@@ -49,4 +49,36 @@ public class Genre {
                 .add("name", this.name)
                 .build();
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<Establishment> getEstablishments() {
+		return establishments;
+	}
+
+	public void setEstablishments(Set<Establishment> establishments) {
+		this.establishments = establishments;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 }

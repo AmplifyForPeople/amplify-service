@@ -36,7 +36,7 @@ public class EstablishmentEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final int id) {	
-		return Response.ok(this.establishments.findById(id)).build();
+		return Response.ok(new dtos.Establishment(this.establishments.findById(id))).build();
 	}
 	
     @POST

@@ -68,4 +68,69 @@ public class Song {
 				.add("author", this.author)
 				.build();
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public Set<PlayList> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<PlayList> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Set<Vote> getVotes() {
+		return votes;
+	}
+
+	public void setVotes(Set<Vote> votes) {
+		this.votes = votes;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	public String getImatge() {
+		return imatge;
+	}
+
+	public void setImatge(String imatge) {
+		this.imatge = imatge;
+	}
+	
 }

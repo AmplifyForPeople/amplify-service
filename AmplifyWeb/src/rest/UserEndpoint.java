@@ -47,7 +47,7 @@ public class UserEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final int id) {
-		return Response.ok(this.users.findById(id)).build();
+		return Response.ok(new dtos.User(this.users.findById(id))).build();
 	}
 //
 //	@GET

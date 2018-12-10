@@ -47,4 +47,37 @@ public class Vote {
                 .add("like_point", this.like_point)
                 .build();
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getLike_point() {
+		return like_point;
+	}
+
+	public void setLike_point(int like_point) {
+		this.like_point = like_point;
+	}
+
+	public Song getSong() {
+		return song;
+	}
+
+	public void setSong(Song song) {
+		this.song = song;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+    
 }

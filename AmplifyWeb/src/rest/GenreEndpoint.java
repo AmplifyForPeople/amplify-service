@@ -36,7 +36,7 @@ public class GenreEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final int id) {	
-		return Response.ok(this.genres.findById(id)).build();
+		return Response.ok(new dtos.Genre(this.genres.findById(id))).build();
 	}
 	
     @POST

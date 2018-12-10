@@ -35,7 +35,7 @@ public class ClientEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final int id) {	
-		return Response.ok(this.clients.findById(id)).build();
+		return Response.ok(new dtos.Client(this.clients.findById(id))).build();
 	}
 	
     @POST
