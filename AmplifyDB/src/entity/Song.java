@@ -30,6 +30,8 @@ public class Song {
 	@NotNull
 	protected String name;
 	
+	//Add genere relation
+	
 	@NotNull
 	protected String album;
 	

@@ -1,6 +1,7 @@
 package dtos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class User {
@@ -35,8 +36,11 @@ public class User {
     	this.password = u.getPassword();
     	this.email = u.getEmail();
     	this.age = u.getAge();
-    	this.establishment = new Establishment(u.getUserinestablishment().iterator().next().getEstablishment());
-    	this.votes = new ArrayList<Vote>();
+    	Iterator<entity.UserInEstablishment> iter = u.getUserinestablishment().iterator();
+    	if(iter.hasNext()) {
+    		this.establishment = new Establishment(iter.next().getEstablishment());
+    	}
+		this.votes = new ArrayList<Vote>();
     	for(entity.Vote v:u.getVotes()) {
     		Vote vo = new Vote();
     		vo.id = v.getId();
