@@ -1,5 +1,8 @@
 package rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -46,13 +49,14 @@ public class EstablishmentEndpoint {
 //	}
 //
 //
-//	@GET
-//	public List<Establishment> listAll(@QueryParam("start") final Integer startPosition,
-//			@QueryParam("max") final Integer maxResult) {
-//		//TODO: retrieve the establishments 
-//		final List<Establishment> establishments = null;
-//		return establishments;
-//	}
+	@GET
+	public Response listAll() {
+		final List<dtos.Establishment> establishments = new ArrayList<dtos.Establishment>();
+		for(Establishment e: this.establishments.findAll()) {
+			establishments.add(new dtos.Establishment(e));
+		}
+		return Response.ok(establishments).build();
+	}
 //
 //	@PUT
 //	@Path("/{id:[0-9][0-9]*}")
