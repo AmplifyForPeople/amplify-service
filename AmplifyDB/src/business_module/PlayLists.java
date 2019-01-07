@@ -15,7 +15,8 @@ public class PlayLists {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<PlayList> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<PlayList> findAll() {
         return this.manager.createNamedQuery(PlayList.FIND_ALL).getResultList();
     }
     

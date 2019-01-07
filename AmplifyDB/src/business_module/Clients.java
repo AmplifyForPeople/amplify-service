@@ -5,7 +5,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import entity.Client;
@@ -16,7 +15,8 @@ public class Clients {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<Client> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<Client> findAll() {
         return this.manager.createNamedQuery(Client.FIND_ALL).getResultList();
     }
     

@@ -15,7 +15,8 @@ public class Genres {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<Genre> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<Genre> findAll() {
         return this.manager.createNamedQuery(Genre.FIND_ALL).getResultList();
     }
     

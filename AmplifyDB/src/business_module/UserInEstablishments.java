@@ -15,7 +15,8 @@ public class UserInEstablishments {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<UserInEstablishment> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<UserInEstablishment> findAll() {
         return this.manager.createNamedQuery(UserInEstablishment.FIND_ALL).getResultList();
     }
     

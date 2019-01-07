@@ -13,7 +13,8 @@ public class Establishments {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<Establishment> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<Establishment> findAll() {
         return this.manager.createNamedQuery(Establishment.FIND_ALL).getResultList();
     }
     

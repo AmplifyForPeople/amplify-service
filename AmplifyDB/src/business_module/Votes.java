@@ -15,7 +15,8 @@ public class Votes {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
-    public List<Vote> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<Vote> findAll() {
         return this.manager.createNamedQuery(Vote.FIND_ALL).getResultList();
     }
     
