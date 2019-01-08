@@ -13,9 +13,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import business_module.Establishments;
-import entity.Establishment;
 
+import business_module.Users;
+import business_module.Establishments;
+import business_module.UserInEstablishments;
+import entity.Establishment;
+import entity.UserInEstablishment;
 //Remeber to add on header "  Accept=application/json   " to try it.
 
 @RequestScoped
@@ -27,11 +30,28 @@ public class EstablishmentEndpoint {
 	@Inject
 	Establishments establishments;
 	
+	@Inject
+	UserInEstablishments userunestablishments;
+	
+	@Inject
+	Users users;
+	
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	public Response findById(@PathParam("id") final int id) {	
 		return Response.ok(new dtos.Establishment(this.establishments.findById(id))).build();
 	}
+	
+	@POST
+	@Path("/go_in/{user_id:[0-9][0-9]*}/{establishment_id:[0-9][0-9]*}")
+	public Response go_in(@PathParam("user_id") final int user_id, @PathParam("establishment_id") final int establishment_id) {
+		UserInEstablishment u = new UserInEstablishment();
+		u.setUser(this.users.findById(user_id));
+		u.setEstablishment(this.establishments.findById(establishment_id));
+		this.userunestablishments.create(u);
+		return Response.ok(new dtos.Establishment(this.establishments.findById(establishment_id))).build();
+	}
+	
 	
     @POST
     public Response save(@Valid Establishment establishment) {

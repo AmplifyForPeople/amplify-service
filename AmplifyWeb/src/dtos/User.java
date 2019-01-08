@@ -32,6 +32,7 @@ public class User {
     }
     
     public User(entity.User u) {
+    	this.name = u.getName();
     	this.id = u.getId();
     	this.password = u.getPassword();
     	this.email = u.getEmail();
@@ -58,6 +59,7 @@ public class User {
     	for(entity.Song s:u.getSongs()) {
     		Song so = new Song();
     		so.id = s.getId();
+    		so.name = s.getName();
     		so.album = s.getAlbum();
     		so.author = s.getAuthor();
     		so.image = s.getImatge();

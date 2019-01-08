@@ -15,10 +15,16 @@ public class Songs {
     @PersistenceContext(name = "amplify")
     EntityManager manager;
 
+//    @SuppressWarnings("unchecked")
+//	public List<Song> findAll() {
+//        return this.manager.createNamedQuery(Song.FIND_ALL).getResultList();
+//    }
+    
     @SuppressWarnings("unchecked")
-	public List<Song> findAll() {
+	public List<Song> mostVoted() {
         return this.manager.createNamedQuery(Song.FIND_ALL).getResultList();
     }
+    
     
     public Song findById(int id){
         return this.manager.find(Song.class, id);

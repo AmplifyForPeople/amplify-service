@@ -36,6 +36,9 @@ public class Genre {
     @ManyToMany(mappedBy="genres")
     protected Set<User>  users;
     
+	@OneToMany(mappedBy="genre")
+	protected Set<Song> songs;
+    
     @Override
     public String toString() {
         return new StringBuilder("Genre [")
@@ -80,5 +83,13 @@ public class Genre {
 
 	public void setUsers(Set<User> users) {
 		this.users = users;
+	}
+
+	public Set<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(Set<Song> songs) {
+		this.songs = songs;
 	}
 }

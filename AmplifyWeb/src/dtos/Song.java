@@ -14,6 +14,8 @@ public class Song {
 
     public String image;
 
+    public int genre_id;
+    
     public Song() {
     	super();
     }
@@ -26,6 +28,7 @@ public class Song {
     	this.author = s.getAlbum();
     	this.image = s.getImatge();
     	this.votes = 0;
+    	this.genre_id = s.getGenre().getId();
     	for(entity.Vote v: s.getVotes()){
     		this.votes += v.getLike_point();
     	}

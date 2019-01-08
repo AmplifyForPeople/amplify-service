@@ -1,5 +1,8 @@
 package rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -11,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import business_module.Songs;
+import entity.Establishment;
 import entity.Song;
 
 //Remeber to add on header "  Accept=application/json   " to try it.
@@ -35,6 +39,16 @@ public class SongEndpoint {
     	this.songs.create(song);
     	return Response.ok(song).build();
     }
+    
+	@GET
+	@Path("/most_voted")
+	public Response listAll() {
+		final List<dtos.Song> songs = new ArrayList<dtos.Song>();
+		for(Song e: this.songs.mostVoted()) {
+			songs.add(new dtos.Song(e));
+		}
+		return Response.ok(songs).build();
+	}
     
 //	@GET
 //	public List<Song> listAll(@QueryParam("start") final Integer startPosition,
