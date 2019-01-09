@@ -1,7 +1,5 @@
-package webservice.dto;
+package fanout.dto;
 
-
-import java.util.List;
 
 public class User {
 

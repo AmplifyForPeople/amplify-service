@@ -1,8 +1,8 @@
-package webservice.services;
+package fanout.services;
 
 import org.springframework.stereotype.Service;
-import webservice.dto.PlayList;
-import webservice.dto.Song;
+import fanout.dto.PlayList;
+import fanout.dto.Song;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,4 @@
-package webservice.dto;
-
-import java.util.List;
+package fanout.dto;
 
 public class Song {
 

@@ -1,6 +1,6 @@
-package webservice.services;
+package fanout.services;
 
-import webservice.dto.*;
+import fanout.dto.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -47,13 +47,13 @@ public class Mocker {
         Establishment e = new Establishment();
         e.id = mockId();
         e.name = mockName();
-        e.genres = new Genre[]{mockGenre(),mockGenre(),mockGenre(),mockGenre(),mockGenre()};
+        //e.genres = new Genre[]{mockGenre(),mockGenre(),mockGenre(),mockGenre(),mockGenre()};
         e.imatge = "image.jpg";
         e.info = "info";
-        e.playlists = new PlayList[]{mockPlaylist(), mockPlaylist()};
+        //e.playlists = new PlayList[]{mockPlaylist(), mockPlaylist()};
         e.position_lat = mockFloat();
         e.position_lng = mockFloat();
-        e.userinestablishments = new UserInEstablishment[]{mockUserInEstablishment(e.id)};
+        //e.userinestablishments = new UserInEstablishment[]{mockUserInEstablishment(e.id)};
         return e;
     }
 

@@ -1,13 +1,13 @@
-package webservice.controllers;
+package fanout.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import webservice.dto.PlayList;
-import webservice.dto.Song;
-import webservice.services.MusicService;
+import fanout.dto.PlayList;
+import fanout.dto.Song;
+import fanout.services.MusicService;
 
 import java.util.List;
 

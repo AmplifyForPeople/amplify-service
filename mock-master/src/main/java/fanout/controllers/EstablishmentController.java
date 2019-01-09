@@ -1,12 +1,12 @@
-package webservice.controllers;
+package fanout.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import webservice.dto.Establishment;
-import webservice.services.EstablishmentService;
+import fanout.dto.Establishment;
+import fanout.services.EstablishmentService;
 
 import java.util.List;
 
@@ -24,6 +24,7 @@ public class EstablishmentController {
 
 	@GetMapping(value = "/similar/{id}", produces = "application/json")
 	public Establishment getSimilar(@PathVariable("id") int id) {
+
 		return service.getSimilarEstablishment(id);
 	}
 

@@ -1,11 +1,10 @@
-package webservice.services;
+package fanout.services;
 
 import org.springframework.stereotype.Service;
-import webservice.dto.Client;
+import fanout.dto.Client;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class ClientService {

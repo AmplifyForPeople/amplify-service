@@ -1,4 +1,4 @@
-package webservice.dto;
+package fanout.dto;
 
 public class Genre {
     public int id;
