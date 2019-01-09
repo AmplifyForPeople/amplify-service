@@ -2,6 +2,7 @@ package fanout.dto;
 
 public class Song {
 
+
     public int id;
 
     public String name;
@@ -10,8 +11,10 @@ public class Song {
 
     public String author;
 
-    public Vote[] votes;
+    public int votes;
 
     public String image;
+
+    public int genre_id;
 
 }
