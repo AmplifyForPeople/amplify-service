@@ -3,6 +3,7 @@ package fanout.controllers;
 import com.google.gson.Gson;
 import fanout.dto.Genre;
 import fanout.dto.Song;
+import messaging.Messaging;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,11 @@ public class GenreController {
         } catch (IOException e) {
             e.printStackTrace();
         };
+        try {
+            Messaging.sendCommonMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return new Gson().fromJson(result.toString(), Genre.class);
     }
 

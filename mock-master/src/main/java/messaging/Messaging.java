@@ -45,7 +45,7 @@ public class Messaging {
     // [START retrieve_access_token]
     private static String getAccessToken() throws IOException {
         GoogleCredential googleCredential = GoogleCredential
-                .fromStream(new FileInputStream("C:\\Users\\arnau.diaz\\Desktop\\quickstart-java\\messaging\\src\\main\\java\\com\\google\\firebase\\quickstart\\amp.json"))
+                .fromStream(new FileInputStream("C:\\Users\\arnau.diaz\\Desktop\\Amplify\\mock-master\\src\\main\\java\\messaging\\amp.json"))
                 .createScoped(Arrays.asList(SCOPES));
         googleCredential.refreshToken();
         return googleCredential.getAccessToken();

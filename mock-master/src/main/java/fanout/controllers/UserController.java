@@ -2,6 +2,7 @@ package fanout.controllers;
 
 import com.google.gson.Gson;
 import fanout.dto.User;
+import messaging.Messaging;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,13 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         };
+
+        try {
+            Messaging.sendCommonMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return new Gson().fromJson(result.toString(), User.class);
     }
 

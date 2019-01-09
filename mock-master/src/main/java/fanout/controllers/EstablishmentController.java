@@ -2,6 +2,7 @@ package fanout.controllers;
 
 import com.google.gson.Gson;
 import fanout.dto.Client;
+import messaging.Messaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,12 @@ public class EstablishmentController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		};
+
+		try {
+			Messaging.sendCommonMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return new Gson().fromJson(result.toString(), Establishment.class);
 	}
 
