@@ -4,8 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import entity.Establishment;
+import entity.User;
+import entity.UserInEstablishment;
 
 
 @Stateless
@@ -26,7 +29,7 @@ public class Establishments {
     public void create(Establishment establishment) {
         this.manager.persist(establishment);
     }
-
+    
     public void remove(int id) {
     	Establishment establishment = findById(id);
         this.manager.remove(establishment);

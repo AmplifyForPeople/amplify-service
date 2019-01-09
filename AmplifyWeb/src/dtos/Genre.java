@@ -9,6 +9,7 @@ public class Genre {
     public List<Song> songs;
     public Genre() {
     	super();
+    	this.songs = new ArrayList<Song>();
     }
     public Genre(entity.Genre g) {
     	super();

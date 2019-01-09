@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class User {
 
     public static final String FIND_ALL = "findAllUsers";
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name="USER_ID")

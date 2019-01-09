@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
+import business_module.PlayLists;
 import business_module.Songs;
 import entity.Establishment;
 import entity.Song;
@@ -27,6 +29,17 @@ public class SongEndpoint {
 
 	@Inject
 	Songs songs;
+	
+	@Inject
+	PlayLists playlist;
+	
+	
+	@POST
+	@Path("/{id:[0-9][0-9]*}")
+	public Response next(@PathParam("id") final int id) {
+		return Response.ok(new dtos.Song(this.songs.findById(id))).build();
+	}
+	
 	
 	@GET
 	@Path("/{id:[0-9][0-9]*}")

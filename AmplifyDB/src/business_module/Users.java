@@ -20,6 +20,13 @@ public class Users {
         return this.manager.createNamedQuery(User.FIND_ALL).getResultList();
     }
     
+    /*@SuppressWarnings("unchecked")
+	public List<User> findUsersbyEstId(int id) {
+        return this.manager.createNamedQuery(User.FIND_BY_STA).getResultList();
+    }*/   
+    
+    
+    
     public User findById(int id){
         return this.manager.find(User.class, id);
     }

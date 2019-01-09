@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "userinestablishment_amplify")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name = UserInEstablishment.FIND_ALL, query = "select g from PlayList g")
+@NamedQuery(name = UserInEstablishment.FIND_ALL, query = "select g from UserInEstablishment g")
 public class UserInEstablishment {
 
     public static final String FIND_ALL = "findAllUserInEstablishment";
