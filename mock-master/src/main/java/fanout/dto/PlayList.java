@@ -1,12 +1,9 @@
-package webservice.dto;
+package fanout.dto;
 
-
-import java.util.List;
 
 public class PlayList {
-
     public int id;
     public boolean current;
-    public Song[] songs;
+    public Song song;
 
 }

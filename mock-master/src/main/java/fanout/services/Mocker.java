@@ -1,6 +1,6 @@
-package webservice.services;
+package fanout.services;
 
-import webservice.dto.*;
+import fanout.dto.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -47,13 +47,13 @@ public class Mocker {
         Establishment e = new Establishment();
         e.id = mockId();
         e.name = mockName();
-        e.genres = new Genre[]{mockGenre(),mockGenre(),mockGenre(),mockGenre(),mockGenre()};
+        //e.genres = new Genre[]{mockGenre(),mockGenre(),mockGenre(),mockGenre(),mockGenre()};
         e.imatge = "image.jpg";
         e.info = "info";
-        e.playlists = new PlayList[]{mockPlaylist(), mockPlaylist()};
+        //e.playlists = new PlayList[]{mockPlaylist(), mockPlaylist()};
         e.position_lat = mockFloat();
         e.position_lng = mockFloat();
-        e.userinestablishments = new UserInEstablishment[]{mockUserInEstablishment(e.id)};
+        //e.userinestablishments = new UserInEstablishment[]{mockUserInEstablishment(e.id)};
         return e;
     }
 
@@ -70,12 +70,9 @@ public class Mocker {
         u.age = mockId();
         u.city = mockName();
         u.email = mockEmail();
-        u.genres = new Genre[]{mockGenre(), mockGenre()};
         u.name = mockName();
         u.password = mockName();
-        u.songs = new Song[]{mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong()};
-        u.votes = new Vote[]{mockVote(),mockVote(),mockVote(),mockVote(),mockVote(),mockVote(), mockVote()};
-        return u;
+       return u;
     }
 
     public static Vote mockVote() {
@@ -92,7 +89,6 @@ public class Mocker {
         s.album = mockName();
         s.author = mockName();
         s.image = "image.jpg";
-        s.votes = new Vote[]{mockVote(), mockVote(),mockVote(),mockVote(),mockVote(),mockVote(),mockVote()};
         return s;
     }
 
@@ -100,7 +96,6 @@ public class Mocker {
         PlayList p = new PlayList();
         p.id = mockId();
         p.current = false;
-        p.songs = new Song[]{mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong(),mockSong()};
         return p;
     }
 

@@ -1,10 +1,9 @@
-package webservice.dto;
+package fanout.dto;
 
 
 import java.util.List;
 
 public class User {
-
     public int id;
 
     public String name;
@@ -17,12 +16,11 @@ public class User {
 
     public String city;
 
-    public UserInEstablishment[] userinestablishment;
+    public Establishment establishment;
 
-    public Vote[] votes;
+    public List<Vote> votes;
 
-    public Genre[] genres;
+    public List<Genre> genres;
 
-    public Song[] songs;
-
+    public List<Song> songs;
 }

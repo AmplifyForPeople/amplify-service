@@ -1,7 +1,7 @@
-package webservice.services;
+package fanout.services;
 
 import org.springframework.stereotype.Service;
-import webservice.dto.Establishment;
+import fanout.dto.Establishment;
 
 import java.util.Arrays;
 import java.util.List;

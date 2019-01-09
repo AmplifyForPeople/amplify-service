@@ -1,8 +1,7 @@
-package webservice.dto;
-
-import java.util.List;
+package fanout.dto;
 
 public class Song {
+
 
     public int id;
 
@@ -12,8 +11,10 @@ public class Song {
 
     public String author;
 
-    public Vote[] votes;
+    public int votes;
 
     public String image;
+
+    public int genre_id;
 
 }

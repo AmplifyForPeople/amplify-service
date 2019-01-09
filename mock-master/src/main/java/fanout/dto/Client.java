@@ -1,12 +1,10 @@
-package webservice.dto;
+package fanout.dto;
 
 public class Client {
-
     public int id;
+    public String email;
+    public Establishment establishment;
     public String name;
     public String password;
-    public String email;
     public String phone;
-    public Establishment establishment;
-
 }
