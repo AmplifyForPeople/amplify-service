@@ -28,7 +28,7 @@ public class UserInEstablishments {
     public void create(UserInEstablishment userinestablishment) {
         this.manager.persist(userinestablishment);
     }
-
+    @Transactional
     public void remove(int id) {
     	UserInEstablishment userinestablishment = findById(id);
         this.manager.remove(userinestablishment);

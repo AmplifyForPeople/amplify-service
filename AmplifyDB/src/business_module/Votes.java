@@ -29,6 +29,7 @@ public class Votes {
         this.manager.persist(vote);
     }
 
+    @Transactional
     public void remove(int id) {
     	Vote vote = findById(id);
         this.manager.remove(vote);

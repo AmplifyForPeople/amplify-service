@@ -17,15 +17,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import com.sun.xml.internal.stream.Entity;
+
 import business_module.Establishments;
 import business_module.PlayLists;
 import business_module.Songs;
 import business_module.UserInEstablishments;
 import business_module.Users;
+import business_module.Votes;
 import dtos.User;
 import entity.Establishment;
 import entity.Song;
 import entity.UserInEstablishment;
+import entity.Vote;
 
 //Remeber to add on header "  Accept=application/json   " to try it.
 
@@ -51,6 +55,8 @@ public class SongEndpoint {
 	@Inject
 	Users user;
 	
+	@Inject
+	Votes votes;
 	
 	@GET
 	@Path("/{id:[0-9][0-9]*}/similar")
@@ -89,8 +95,56 @@ public class SongEndpoint {
 
 	@POST
 	@Path("/{user_id:[0-9][0-9]*}/{song_id:[0-9][0-9]*}")
-	public Response next(@PathParam("user_id") final int user_id, @PathParam("song_id") final int song_id) {
+	public Response add_song(@PathParam("user_id") final int user_id, @PathParam("song_id") final int song_id) {
 		this.user.add_song(user_id, song_id);
+		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("/{user_id:[0-9][0-9]*}/{song_id:[0-9][0-9]*}/delete")
+	public Response remove_song(@PathParam("user_id") final int user_id, @PathParam("song_id") final int song_id) {
+		this.user.delete_song(user_id, song_id);
+		return Response.ok().build();
+	}
+	
+	
+	private int get_vote_id(int user_id, int song_id) {
+		List<entity.Vote> votes = this.votes.findAll();
+		for(entity.Vote v: votes) {
+			if(v.getUser().getId() == user_id && v.getSong().getId() == song_id) {
+				return v.getId();
+			}
+		}
+		return 0;
+	}
+	
+	@POST
+	@Path("/{user_id:[0-9][0-9]*}/{song_id:[0-9][0-9]*}/{puntuation:[0-9][0-9]*}/vote")
+	public Response remove_song(@PathParam("user_id") final int user_id, @PathParam("song_id") final int song_id, @PathParam("puntuation") final int puntuation) {
+		int vote_id=0;
+		int vote_to_delete;
+		if(puntuation == 0) {
+			vote_to_delete = this.user.delete_vote_song(user_id, song_id);
+			if(vote_to_delete != -1) {
+				this.votes.remove(vote_to_delete);
+			}
+		}else {
+			entity.User u  = this.user.findById(user_id);
+	    	entity.Vote v = new entity.Vote(); 	
+	    	v.setUser(u);
+	    	v.setSong(this.songs.findById(song_id));
+			if(puntuation == 1){
+				v.setLike_point(1);
+				this.votes.create(v);
+				vote_id = get_vote_id(user_id, song_id);
+			}else {
+				v.setLike_point(-1);
+				this.votes.create(v);
+				vote_id = get_vote_id(user_id, song_id);
+			}
+			this.user.add_vote_song(user_id, vote_id);
+			
+		}
 		return Response.ok().build();
 	}
 	

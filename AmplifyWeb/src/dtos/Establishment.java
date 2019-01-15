@@ -1,6 +1,8 @@
 package dtos;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Establishment {
 
@@ -13,6 +15,7 @@ public class Establishment {
     public List<PlayList> playlists;
     public UserInEstablishment[] userinestablishments;
     public List<Genre> genres;
+    public int user_in_e;
 
     public int getId() {
 		return id;
@@ -72,6 +75,7 @@ public class Establishment {
     	super();	
     }
 	public Establishment(entity.Establishment e) {
+		this.user_in_e = 0;
 		this.id= e.getId();
 		this.name = e.getName();
 		this.info = e.getInfo();
@@ -100,6 +104,17 @@ public class Establishment {
 			ge.name = g.getName();
 			this.genres.add(ge);
 		}
+		Set<Integer> user_in = new HashSet<>();
+		for(entity.UserInEstablishment ue: e.getUserinestablishments()) {
+			user_in.add(ue.getId());
+		}
+		this.user_in_e = user_in.size();
+	}
+	public int getUser_in_e() {
+		return user_in_e;
+	}
+	public void setUser_in_e(int user_in_e) {
+		this.user_in_e = user_in_e;
 	}
     
 }

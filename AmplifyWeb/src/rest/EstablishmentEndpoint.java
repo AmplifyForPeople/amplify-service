@@ -64,7 +64,12 @@ public class EstablishmentEndpoint {
 	@POST
 	@Path("/go_in/{user_id:[0-9][0-9]*}/{establishment_id:[0-9][0-9]*}")
 	public Response go_in(@PathParam("user_id") final int user_id, @PathParam("establishment_id") final int establishment_id) {
-    	UserInEstablishment u = new UserInEstablishment();
+    	for(entity.UserInEstablishment ue:this.userunestablishments.findAll()) {
+    		if(ue.getUser().getId() == user_id) {
+    			this.userunestablishments.remove(ue.getId());
+    		}
+    	}
+		UserInEstablishment u = new UserInEstablishment();
     	u.setUser(this.users.findById(user_id));
 		u.setEstablishment(this.establishments.findById(establishment_id));
 		this.userunestablishments.create(u);

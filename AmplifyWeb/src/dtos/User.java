@@ -42,7 +42,7 @@ public class User {
     		this.establishment = new Establishment(iter.next().getEstablishment());
     	}
 		this.votes = new ArrayList<Vote>();
-    	for(entity.Vote v:u.getVotes()) {
+		for(entity.Vote v:u.getVotes()) {
     		dtos.Vote vo = new dtos.Vote();
     		vo.song_id = v.getSong().getId();
     		vo.id = v.getId();
