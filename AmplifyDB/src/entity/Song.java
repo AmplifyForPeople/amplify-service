@@ -42,8 +42,6 @@ public class Song {
 	@NotNull
 	protected String name;
 	
-	//Add genere relation
-	
 	@NotNull
 	protected String album;
 	
@@ -66,6 +64,9 @@ public class Song {
 	@NotNull
 	protected String imatge;
 
+	
+	protected String url;
+	
 	@Override
 	public String toString() {
 		return new StringBuilder("Song [")
@@ -98,6 +99,14 @@ public class Song {
 		return name;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -127,7 +136,7 @@ public class Song {
 	}
 
 	public Set<Vote> getVotes() {
-		return votes;
+		return this.votes;
 	}
 
 	public void setVotes(Set<Vote> votes) {

@@ -67,7 +67,7 @@ public class PlayList {
 	}
 
 	public Establishment getEstablishment() {
-		return establishment;
+		return this.establishment;
 	}
 
 	public void setEstablishment(Establishment establishment) {

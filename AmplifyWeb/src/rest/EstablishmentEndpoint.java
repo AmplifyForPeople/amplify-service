@@ -93,11 +93,15 @@ public class EstablishmentEndpoint {
 			dtos.Establishment est = new  dtos.Establishment(us.getEstablishment());
 			if(est.id==establishment_id) {
 				for(dtos.Genre g: use.genres) {
-					genres_values.put(g, genres_values.get(g)+1);
+					int value = 1;
+					if(genres_values.get(g) != null) {
+						value += genres_values.get(g);
+					}
+					genres_values.put(g, value);
 				}
 			}
 		}
-		//recreate_play_list(establishment_id, genres_values);
+		recreate_play_list(establishment_id, genres_values);
 		return genres_values;
 	}
 	
@@ -107,7 +111,7 @@ public class EstablishmentEndpoint {
 		for(Map.Entry<dtos.Genre, Integer> entry : genres_values.entrySet()) {
 		    dtos.Genre key = entry.getKey();
 		    Integer value = entry.getValue();
-		    if(value == max || max==0  ) {
+		    if(value >= max || max==0  ) {
 		    	max = value;
 		    	genre = key;
 		    }	
@@ -131,6 +135,7 @@ public class EstablishmentEndpoint {
 	}
 	
 	private void recreate_play_list(int establishment_id, Map<dtos.Genre, Integer> genres_values) {
+		System.out.println(genres_values.size());
 		List<dtos.Song> songs1 = null;
 		List<dtos.Song> songs2 = null;
 		List<dtos.Song> songs3 = null;
@@ -142,6 +147,7 @@ public class EstablishmentEndpoint {
 		if(songs1!=null) {songs.addAll(songs1);}
 		if(songs2!=null) {songs.addAll(songs2);}
 		if(songs3!=null) {songs.addAll(songs3);}
+		
 		while(0 != songs.size()) {
 			int rn = getRandomElement(songs);
 			result_songs.add(songs.get(rn)); // Nova llista
@@ -150,7 +156,7 @@ public class EstablishmentEndpoint {
 		
 		for(entity.PlayList pl : this.playlists.findAll()) {
 			if(pl.getEstablishment().getId() == establishment_id && !pl.isCurrent()) {
-				//this.playlists.remove(this.playlists.findById(pl.getId()));
+				this.playlists.remove(pl.getId());
 			}
 		}
 		
@@ -158,6 +164,7 @@ public class EstablishmentEndpoint {
 			entity.PlayList e_p = new entity.PlayList();
 			e_p.setCurrent(false);
 			e_p.setSong(this.songs.findById(s.id));
+			e_p.setEstablishment(this.establishments.findById(establishment_id));
 			this.playlists.create(e_p);
 		}
 	}

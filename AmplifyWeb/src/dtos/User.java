@@ -43,7 +43,8 @@ public class User {
     	}
 		this.votes = new ArrayList<Vote>();
     	for(entity.Vote v:u.getVotes()) {
-    		Vote vo = new Vote();
+    		dtos.Vote vo = new dtos.Vote();
+    		vo.song_id = v.getSong().getId();
     		vo.id = v.getId();
     		vo.like_point = v.getLike_point();
     		this.votes.add(vo);

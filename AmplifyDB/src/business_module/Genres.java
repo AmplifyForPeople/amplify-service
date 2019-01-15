@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import java.util.List;
 import entity.Genre;
+import entity.Song;
 
 
 @Stateless
@@ -18,6 +19,11 @@ public class Genres {
     @SuppressWarnings("unchecked")
 	public List<Genre> findAll() {
         return this.manager.createNamedQuery(Genre.FIND_ALL).getResultList();
+    }
+
+    @SuppressWarnings("unchecked")
+	public List<Genre> mostVoted() {
+    	return this.manager.createNamedQuery(Genre.FIND_ALL).getResultList();
     }
     
     public Genre findById(int id){

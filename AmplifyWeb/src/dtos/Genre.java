@@ -18,6 +18,10 @@ public class Genre {
     	this.songs = new ArrayList<Song>();
 		for(entity.Song song : g.getSongs()) {
 			Song p = new Song();
+			p.votes = 0;
+	    	for(entity.Vote v: song.getVotes()){
+	    		p.votes += v.getLike_point();
+	    	}
 			p.album = song.getAlbum();
 			p.name = song.getName();
 			p.author = song.getAlbum();
@@ -26,4 +30,29 @@ public class Genre {
 			this.songs.add(p);
 		} 
     }
+
+    public int get_votes() {
+    	int sum = 0;
+    	for(dtos.Song s: this.songs) {
+    		sum += s.votes;
+    	}
+    	return sum;
+    }
+    
+    @Override
+    public int hashCode() {
+        return this.id;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+          return true;
+        }
+        if (!(o instanceof Genre)) {
+          return false;
+        }
+        Genre cc = (Genre)o;
+        return cc.id == this.id;
+      }
 }

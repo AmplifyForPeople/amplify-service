@@ -1,5 +1,8 @@
 package rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -12,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import business_module.Genres;
 import entity.Genre;
+import entity.Song;
 
 //Remeber to add on header "  Accept=application/json   " to try it.
 
@@ -35,6 +39,36 @@ public class GenreEndpoint {
     	this.genres.create(genre);
     	return Response.ok(genre).build();
     }
+    
+    
+	private dtos.Genre get_max_and_pop(List<dtos.Genre> genres) {
+		int max = 0;
+		dtos.Genre genre = null;
+		for(dtos.Genre g: genres) {
+			if(g.get_votes() >= max || max==0  ) {
+		    	max = g.get_votes();
+		    	genre = g;
+		    }	
+		 }
+		genres.remove(genre);
+		return genre;
+	}
+    
+	
+	@GET
+	@Path("/most_voted")
+	public Response listAll() {
+		final List<dtos.Genre> genres = new ArrayList<dtos.Genre>();
+		final List<dtos.Genre> result_genres = new ArrayList<dtos.Genre>();
+		for(Genre e: this.genres.mostVoted()) {
+			genres.add(new dtos.Genre(e));
+		}
+		if(genres.size()!=0) {result_genres.add(get_max_and_pop(genres));}
+		if(genres.size()!=0) {result_genres.add(get_max_and_pop(genres));}
+		if(genres.size()!=0) {result_genres.add(get_max_and_pop(genres));}
+		return Response.ok(result_genres).build();
+	}
+	
 //	@GET
 //	public List<Genre> listAll(@QueryParam("start") final Integer startPosition,
 //			@QueryParam("max") final Integer maxResult) {

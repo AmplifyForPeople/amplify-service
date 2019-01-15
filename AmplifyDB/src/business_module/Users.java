@@ -5,8 +5,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.ws.rs.PathParam;
 
 import java.util.List;
+import java.util.Set;
+
+import entity.PlayList;
+import entity.Song;
 import entity.User;
 
 
@@ -25,7 +30,15 @@ public class Users {
         return this.manager.createNamedQuery(User.FIND_BY_STA).getResultList();
     }*/   
     
-    
+    @Transactional 
+    public void add_song(int user_id, int song_id) {
+    	entity.User u  = this.manager.find(User.class, user_id);
+		entity.Song s =  this.manager.find(Song.class, song_id);
+		Set<entity.Song> songs = u.getSongs();
+		songs.add(s);
+		u.setSongs(songs);
+    	this.manager.merge(u);
+    }
     
     public User findById(int id){
         return this.manager.find(User.class, id);

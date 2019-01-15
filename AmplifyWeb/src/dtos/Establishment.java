@@ -82,12 +82,14 @@ public class Establishment {
 		for(entity.PlayList play : e.getPlaylists()) {
 			PlayList p = new PlayList();
 			p.current = play.isCurrent();
+			p.id = play.getId();
 			Song s = new Song();
 			s.name = play.getSong().getName();
 			s.author = play.getSong().getAlbum();
 			s.image = play.getSong().getImatge();
 			s.id = play.getSong().getId();
 			s.album=play.getSong().getAlbum();
+			s.url = play.getSong().getUrl();
 			p.song = s;
 			this.playlists.add(p);
 		} 
